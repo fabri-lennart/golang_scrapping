@@ -43,5 +43,15 @@ func NewDatabase(dbPath string) (*Database, error) {
 		return nil, err
 	}
 
+	// 1. AQUÍ CERRAMOS NewDatabase devolviendo la base de datos creada
 	return &Database{Conn: db}, nil
+} // <-- Esta llave cierra NewDatabase
+
+// 2. AQUÍ DECLARAMOS SaveProduct, totalmente independiente y usando el tipo "Product"
+func (db *Database) SaveProduct(p Product) error {
+	query := `INSERT INTO products (product_name, price) VALUES (?, ?)`
+
+	// db.Conn.Exec executes the query without returning any rows
+	_, err := db.Conn.Exec(query, p.ProductName, p.Price)
+	return err
 }
