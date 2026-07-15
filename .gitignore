@@ -1,0 +1,17 @@
+/dist/
+/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+scraper
+
+.env
+*.local
+
+.vscode/
+.idea/
+*.swp
+*~
